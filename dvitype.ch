@@ -8,7 +8,7 @@ To be used with the GNU Pascal Compiler
 \pageno=\contentspagenumber \advance\pageno by 1
 \input webmac-gpc
 
-% \let\maybe=\iffalse % uncomment to print changed modules only.
+\let\maybe=\iffalse % print changed modules only.
 
 \def\name{\tt DVItype}
 

@@ -10,7 +10,7 @@
 \input webmac-gpc
 \def\name{{\tt TANGLE}}
 
-% \let\maybe=\iffalse % uncomment to print changed modules only.
+\let\maybe=\iffalse % print changed modules only.
 
 \N0\*. About \namegpc.\fi
 This is an adaption of Donald~E. Knuth's \.{TANGLE}, version 4.5

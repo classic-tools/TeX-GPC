@@ -1,3 +1,30 @@
+@x
+% Here is TeX material that gets inserted after \input webmac
+@y
+% Here is TeX material that gets inserted after \input webmac
+\input webmac-gpc
+
+\let\maybe=\iffalse % print changed modules only.
+
+\def\name{\tt POOLtype}
+
+\N0\*. About \namegpc.\fi
+
+This is an adaption of Donald~E. Knuth's \.{POOLtype}, version 3
+from September 1989, to Unix. It is based on GNU~Pascal, version 2.1.
+
+This program expects the input file (\.{.pool}) file,
+which is a pool file, on the command line.  To support shell
+scripting, \namegpc\ sets the exit code to one when something was
+wrong with the input file.
+
+\hint
+
+Comments and questions are welcome!
+
+\bigskip
+\address
+@z
 
 @x
   \centerline{(Version 3, September 1989)}

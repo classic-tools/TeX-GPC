@@ -13,8 +13,8 @@ To be used with the GNU Pascal Compiler Version 2.1
 \def\name{\tt GFtoPK}
 
 \N0\*. About \namegpc.\fi
-This is an adaption of Donald~E. Knuth's \.{GFtoPK}, version 2.3
-from December 1996, to Unix. \namegpc\ is based on GNU~Pascal,
+This is an adaption of Donald~E. Knuth's \.{GFtoPK}, version 2.4
+from January 2014, to Unix. \namegpc\ is based on GNU~Pascal,
 version 2.1.
 
 \namegpc\ expects the input file (\.{.gf}) and the output file
@@ -32,7 +32,7 @@ Comments and questions are welcome!
 
 [1] Change the banner line
 @x
-@d banner=='This is GFtoPK, Version 2.3' {printed when the program starts}
+@d banner=='This is GFtoPK, Version 2.4' {printed when the program starts}
 @y
 @d banner=='This is GFtoPK-GPC'
    {printed when the program starts}

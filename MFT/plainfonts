@@ -49,4 +49,4 @@ mkfont cmdunh10 # Dunhill style
 mkpkfont cmr7 magstep4 # for titles
 mkpkfont cmtt10 magstep2
 mkpkfont cmssbx10 magstep2
-mkfont lib/manfnt # METAFONT logo and dragon curve and special symbols
+mkfont manfnt # METAFONT logo and dragon curve and special symbols

@@ -9,7 +9,7 @@
 \input webmac-gpc
 \def\name{\tt WEAVE}
 
-% \let\maybe=\iffalse % uncomment to print changed modules only.
+\let\maybe=\iffalse % print changed modules only.
 
 \N0\*. About \namegpc.\fi
 This is an adaption of Donald~E. Knuth's \.{WEAVE}, version 4.4

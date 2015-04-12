@@ -1,7 +1,7 @@
-November 2009
+July 2014
 This directory contains change files for Donald E. Knuth's suite
 of TeX related programs. The change files (.ch) and Don Knuth's
-WEB files (.web) from March 2008 are the key components of a
+WEB files (.web) from January 2014 are the key components of a
 construction kit for "TeX-GPC"---a TeX system which is based on
 the GNU Pascal compiler and runs in a Unix environment.  It's
 smaller, less configurable and therefore easier to master than
@@ -49,7 +49,7 @@ and found out that newer versions of GPC expect the parameter type
 "cinteger" instead of "integer" in a certain function.  Change the
 WEB macro "gpc_integer" in tex.ch and mf.ch accordingly.
 
-This release of TeX-GPC was tested on Mac OS X 10.6.2 (Snow Leopard)
+This release of TeX-GPC was tested on Mac OS X 10.8.
 and GPC 20070904, based on gcc-3.4.6.
 
 The changes are:
@@ -218,19 +218,20 @@ directory and copy them to the working directory or to TeXinputs.
 My change files import webmac-gpc.tex; move it to TeXinputs.
 
 Search the sources of missing fonts in the lib directory (.mf),
-and use the scripts mkfont  or mkpkfont to create and install .tfm
-files respective .pk files. The shell scripts assume the METAFONT
-mode localfont which is defined in MF/local.mf. Remember, you've
-loaded local.mf into the file plain.base. Or you might want to grep
-for font assignments in your .tex files. The command line
+copy them to MFinputs and use the scripts mkfont  or mkpkfont to
+create and install .tfm files respective .pk files. The shell scripts
+assume the METAFONT mode localfont which is defined in MFT/local.mf.
+Remember, you've loaded local.mf into the file plain.base. Or you
+might want to grep for font assignments in your .tex files. The
+command line
 	grep '\\font.*=' plain.tex > plainfonts
 creates a list of the font names used by plain.tex. I edited
 plainfonts to convert it to a shell script that creates all fonts
-of the plain format. In the MF directory you'll find other examples.
+of the plain format. In the MFT directory you'll find other examples.
 
 Installing new fonts from CTAN
 ------------------------------
-The directory MF/iby contains instructions on how to install a font
+The directory MFT/iby contains instructions on how to install a font
 from CTAN, in this case ibygrk to typeset polytonic ancient Greek.
 
 Printing the documentation
@@ -271,6 +272,9 @@ Copy the .mf files from
 	ftp://ftp.dante.de/pub/tex/fonts/cm/mf/
 to MFinputs.
 
+And Copy the .mf files from the lib directory to MFinputs.
+        cp -p lib/*.mf MFinputs
+
 I prefer the DANTE server, because that server preserves modification
 times. This is not true with other CTAN mirrors.
 
@@ -293,7 +297,7 @@ Step by step procedure to bootstrap TeX-GPC
 Compile tangle.p (gpc tangle.p) and move a.out as tangle to your
 binary directory.
 
-1. Make inimf and initex  mf.web,  mf.ch --> inimf, inimf.p, MFBases/mf.pool
+1. Make inimf and initex  mf.web,  mf.ch --> inimf, inimf.p, MFbases/mf.pool
                          tex.web, tex.ch --> initex,initex.p TeXformats/tex.pool
 ------------------------------------------------------------------------
 Build the ini-programs and save them as initex, resp. inimf.
@@ -305,13 +309,13 @@ of tgl to keep inimf.p and initex.p.
 Go to the directory tex-gpc/mf and use inimf to create plain.base.
 The file local.mf contains mode definitions for my HP LaserJet 1320
 printer. Adapt local.mf to your printer and then type
-	inimf ../lib/plain input ../MF/local dump
+	inimf ../lib/plain input ../MFT/local dump
 
 Move plain.base to MFbases.
 
 3. Make mf 					    mf.web, mf.ch --> mf
 ------------------------------------------------------------------------
-Edit mf and look for the string @x inimf that introduces a change
+Edit mf.ch and look for the string @x inimf that introduces a change
 block. This change block is commented out, since it is shifted
 right.  Shift left this block to uncomment it. This way mf.ch is
 changed to build a production version.

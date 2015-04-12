@@ -7,14 +7,14 @@
 \input webmac-gpc
 \emergencystretch 0.5in % avoid overfull boxes
 
-% \let\maybe=\iffalse % uncomment to print changed modules only.
+\let\maybe=\iffalse % print changed modules only.
 
 \def\name{\MF}
 
 \N0\*.  \[0] About \namegpc.
 
-This is an adaption of Donald~E. Knuth's \MF, version 2.718281
-from March 2008, to Unix. It is based on GNU~Pascal, version 2.1.
+This is an adaption of Donald~E. Knuth's \MF, version 2.7182815
+from January 2014, to Unix. It is based on GNU~Pascal, version 2.1.
 
 The features added include treating the command line as the first
 input line and invoking a system editor, in this case \.{vi}, to
@@ -32,7 +32,7 @@ Comments and questions are welcome!
 
 [2] Change the banner line
 @x
-@d banner=='This is METAFONT, Version 2.718281' {printed when \MF\ starts}
+@d banner=='This is METAFONT, Version 2.7182818' {printed when \MF\ starts}
 @y
 @d banner=='This is METAFONT-GPC' {printed when \MF\ starts}
 @z

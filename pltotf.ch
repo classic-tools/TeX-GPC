@@ -7,13 +7,13 @@
 \pageno=\contentspagenumber \advance\pageno by 1
 \input webmac-gpc
 
-% \let\maybe=\iffalse % uncomment to print changed modules only.
+\let\maybe=\iffalse % print changed modules only.
 
 \def\name{\tt PLtoTF}
 
 \N0\*. About \namegpc.\fi
 
-This is an adaption of Donald~E. Knuth's \.{PLtoTF}, version 3.5
+This is an adaption of Donald~E. Knuth's \.{PLtoTF}, version 3.6
 from March 1995, to Unix. It is based on GNU~Pascal, version 2.1.
 
 This program expects an input file (\.{.tfm}) and an output file
@@ -31,7 +31,7 @@ Comments and questions are welcome!
 
 [1]
 @x
-@d banner=='This is PLtoTF, Version 3.5' {printed when the program starts}
+@d banner=='This is PLtoTF, Version 3.6' {printed when the program starts}
 @y
 @d banner=='This is PLtoTF-GPC'
 {printed when the program starts}

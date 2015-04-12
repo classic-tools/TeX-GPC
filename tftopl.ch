@@ -6,13 +6,13 @@
 \pageno=\contentspagenumber \advance\pageno by 1
 \input webmac-gpc
 
-% \let\maybe=\iffalse % uncomment to print changed modules only.
+\let\maybe=\iffalse % print changed modules only.
 
 \def\name{\tt TFtoPL}
 
 \N0\*. About \namegpc.\fi
 
-This is an adaption of Donald~E. Knuth's \.{TFtoPL}, version 3.2
+This is an adaption of Donald~E. Knuth's \.{TFtoPL}, version 3.3
 from March 2008, to Unix. It is based on GNU~Pascal, version 2.1.
 
 This program expects an input file (\.{.tfm}) and an output file
@@ -29,7 +29,7 @@ Comments and questions are welcome!
 @z
 [1]
 @x
-@d banner=='This is TFtoPL, Version 3.2' {printed when the program starts}
+@d banner=='This is TFtoPL, Version 3.3' {printed when the program starts}
 @y
 @d banner=='This is TFtoPL-GPC' {printed when the program starts}
 @z

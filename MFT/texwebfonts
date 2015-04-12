@@ -1,2 +1,2 @@
 # font used tex.tex
-mkfont ../lib/logo10 # font used for the METAFONT logo
+mkfont logo10 # font used for the METAFONT logo

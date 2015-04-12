@@ -24,7 +24,7 @@
 
 \emergencystretch 0.6in % avoid overfull boxes 
 
-% \let\maybe=\iffalse % uncomment to print changed modules only.
+\let\maybe=\iffalse % print changed modules only.
 
 % put a mark in the left margin. (see Exercise 14.28 in The TeXbook)
 \def\marke#1{\strut\vadjust{\kern-\dp\strutbox\vbox to 0pt{\vss
@@ -34,7 +34,7 @@
 
 \N0\*.  \[0] About \namegpc.
 \namegpc\ is a Unix implementation of Donald~E. Knuth's \TeX82 in
-the version 3.1415926 from March 2008. It is based on GNU Pascal.
+the version 3.14159265 from January 2014. It is based on GNU Pascal.
 The accompaning \.{README} file tells you how to build and run
 \namegpc.  To help you identify the differences of \TeX82 and
 \namegpc, the numbers of modified modules carry an asterisk. Letters
@@ -120,7 +120,7 @@ glue only, because then \TeX\ would erroneously remove the
 known as `\TeX' [cf.~Stanford Computer Science report CS1027,
 November 1984].
 
-@d banner=='This is TeX, Version 3.1415926' {printed when \TeX\ starts}
+@d banner=='This is TeX, Version 3.14159265' {printed when \TeX\ starts}
 @y
 known as `\TeX' [cf.~Stanford Computer Science report CS1027,
 November 1984].
