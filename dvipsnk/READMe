@@ -1,0 +1,24 @@
+Aug 2008 
+The files in this directory help to build Tom Rockiki's dvips for TeX-GPC.
+
+Since KPSE does not blend with TeX-GPC, and CTAN only offers KPSE based
+versions of DVIPS, I downloaded the latest release from Stanford:
+     ftp ftp://ftp.cs.stanford.edu/pub/dvips/dvips576.tar.gz
+
+It unpacks in a directory dvips576. Edit Makefile from this directory
+to reflect the default resolution of your printer, the location
+of your binary and "man" directory.
+
+Replace Makefile and MakeTeXPK in dvips576/dvips by the files from
+this directory. See xdvi/README for hints on the man directory.
+
+Create a master directory DVIPSconf if you haven't done so already, goto
+dvips576/dvips, run mk_TeX_dir, mk_MF_dir, and make install.
+
+Edit DVIPSconf/config.ps to reflect paper size and resolution of
+your printer.  To make dvips generate missing .pk fonts automatically,
+the resolutions in config.ps and in the mf mode "localfont" must
+agree.
+
+Enjoy,
+Wolfgang

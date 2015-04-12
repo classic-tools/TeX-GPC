@@ -1,0 +1,10 @@
+1c1
+< This is TeX-GPC (INITEX)  7 SEP 2008 00:38
+---
+> This is TeX, Version 3.1415926 (INITEX)  15 MAR 2008 02:23
+450,451c450,451
+<  (preloaded format=trip 2008.9.7)
+< 1323 strings of total length 23563
+---
+>  (preloaded format=trip 2008.3.15)
+> 1326 strings of total length 23646

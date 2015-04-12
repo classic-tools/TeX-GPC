@@ -1,0 +1,5 @@
+# add -R for X11 shared library, necessary with NetBSD
+cc -Xlinker --allow-multiple-definition  -L/usr/X11R6/lib -Wl,-R/usr/X11R6/lib -o xdvi \
+xdvi.o events.o dvi-init.o dvi-draw.o special.o font-open.o filefind.o \
+pk.o vf.o util.o popups.o psheader.o psgs.o -lXaw -lXmu -lXt -lSM \
+-lICE -lm -lXext -lX11

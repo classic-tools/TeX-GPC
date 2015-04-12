@@ -1,0 +1,6 @@
+METAFONT-GPC does not pass the TRAP test. It doesn't trim trailing spaces
+from input lines. That explains the differences in trap.log. Everything
+else seems ok.
+
+September 2008
+Wolfgang Helbig

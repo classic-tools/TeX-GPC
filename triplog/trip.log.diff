@@ -1,0 +1,16 @@
+1,2c1,2
+< This is TeX-GPC (preloaded format=trip 2008.9.7)  7 SEP 2008 00:41
+< ** &trip  trip 
+---
+> This is TeX, Version 3.1415926 (preloaded format=trip 2008.3.15)  15 MAR 2008 02:23
+> ** &trip  trip
+7296,7297c7296,7297
+<  49 strings out of 1677
+<  273 string characters out of 8437
+---
+>  47 strings out of 1674
+>  253 string characters out of 8354
+7302c7302
+<  7i,7n,9p,114b,38s stack positions out of 200i,40n,60p,500b,600s
+---
+>  7i,7n,9p,113b,38s stack positions out of 200i,40n,60p,500b,600s

@@ -1,0 +1,22 @@
+How to install xdvi for TeX-GPC:
+
+Get the source from
+  ftp http://math.berkeley.edu/~vojta/xdvi/xdvi-22.85.tar.gz
+It unpacks into xdvi-22.85.
+
+Edit config reflecting your binary directory, your man directory
+(i. e. a directory you have write permissions and has a subdirectory
+man1) and the resolution of your printer and then switch to xdvi-22.84
+and run
+../config && make clean && make && ../load && make install
+
+The xdvi is configured soley by DVIPSconf/XDvi, move XDvi to DVIPSconf.
+
+You might want to change /etc/man.conf to include your private man pages.
+I boldly replaced the line
+_default        /usr/{share,X11R6,pkg,local}/man/
+to
+_default        /usr/{helbig,share,X11R6,pkg,local}/man/
+
+enjoy
+Wolfgang 

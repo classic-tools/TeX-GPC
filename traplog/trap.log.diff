@@ -1,0 +1,24 @@
+1,2c1,2
+< This is METAFONT-GPC (preloaded base=trap 2008.9.7)  7 SEP 2008 12:47
+< ** &trap  trap 
+---
+> This is METAFONT, Version 2.718281 (preloaded base=trap 2008.3.15)  15 MAR 2008 02:23
+> ** &trap  trap
+1825c1825
+< String usage 24&92 (860&11376 still untouched)
+---
+> String usage 24&92 (858&11309 still untouched)
+4235c4235
+< String usage 42&168 (816&7694 still untouched)
+---
+> String usage 41&161 (815&7634 still untouched)
+4251,4252c4251,4252
+<  69 strings out of 885
+<  3759 string characters out of 11453
+---
+>  68 strings out of 883
+>  3752 string characters out of 11386
+4255c4255
+<  8i,43n,14r,8p,168b stack positions out of 30i,100n,300r,150p,500b
+---
+>  8i,43n,14r,8p,167b stack positions out of 30i,100n,300r,150p,500b

@@ -1,0 +1,15 @@
+The TRIP test nicely shows the sin of TeX-GPC: It does not trim trailing
+spaces of input lines.
+This is shown in trip.log.diff, the "**" line of TeX-GPC's log file
+contains a space, whereas the original log file doesn't. Furthermore
+the statistics the high water marks of the buffer stack differ by
+one (113b not 114b) which is the trailing space.
+
+TeX-GPC needs more strings and string characters than TeX because it
+does not conserve string space.
+
+These are all differences shown by the TRIP test, so TeX-GPC is
+still pretty close to TeX.
+
+September 2008
+Wolfgang Helbig

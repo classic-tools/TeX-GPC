@@ -1,0 +1,14 @@
+1c1
+< This is METAFONT-GPC (INIMF)  7 SEP 2008 12:45
+---
+> This is METAFONT, Version 2.718281 (INIMF)  15 MAR 2008 02:23
+150c150
+< String usage 26&83 (893&11504 still untouched)
+---
+> String usage 26&83 (891&11438 still untouched)
+176,177c176,177
+<  (preloaded base=trap 2008.9.7)
+< 1115 strings of total length 20547
+---
+>  (preloaded base=trap 2008.3.15)
+> 1117 strings of total length 20614
