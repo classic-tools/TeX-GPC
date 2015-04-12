@@ -1,5 +1,5 @@
 % This is a change file of DVIType for GPC, Wolfgang Helbig, Nov. 2007
-To be used with the GNU Pascal Compiler Version 2.1
+To be used with the GNU Pascal Compiler
 
 [0] About DVItype-GPC
 @x
@@ -121,7 +121,7 @@ procedure move_to_byte(n:integer);
 begin set_pos(dvi_file,n); cur_loc:=n;
 end;
 @y;
-begin do_nothing;
+begin dvi_length := 0
 end;
 @#
 procedure move_to_byte(n:integer);

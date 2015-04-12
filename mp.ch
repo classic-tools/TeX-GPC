@@ -1,4 +1,5 @@
-% This is a change file of Metafont for GPC, Wolfgang Helbig, Nov. 2007
+% This is a change file of METAPOST for GPC, Wolfgang Helbig, Aug. 2008
+% See tex.ch and mf.ch from tex-gpc
 [0] to print changed sections only
 @x
 \def\gglob{20, 26} % this should be the next two sections of "<Global...>"
@@ -9,12 +10,12 @@
 
 % \let\maybe=\iffalse % uncomment to print changed modules only.
 
-\def\name{\MF}
+\def\name{\MP}
 
 \N0\*.  \[0] About \namegpc.
 
-This is an adaption of Donald~E. Knuth's \MF, version 2.718281
-from March 2008, to Unix. It is based on GNU~Pascal, version 2.1.
+This is an adaption of John Hobby's \MP, version 0.641, to Unix,
+and GNU~Pascal, version 2.1.
 
 The features added include treating the command line as the first
 input line and invoking a system editor, in this case \.{vi}, to
@@ -32,19 +33,15 @@ Comments and questions are welcome!
 
 [2] Change the banner line
 @x
-@d banner=='This is METAFONT, Version 2.718281' {printed when \MF\ starts}
+@d banner=='This is MetaPost, Version 0.641' {printed when \MP\ starts}
 @y
-@d banner=='This is METAFONT-GPC' {printed when \MF\ starts}
+@d banner=='This is MetaPost-GPC' {printed when \MP\ starts}
 @z
 
 [4] terminal output and input
 @x
-@^system dependencies@>
-
 @d mtype==t@&y@&p@&e {this is a \.{WEB} coding trick:}
 @y
-@^system dependencies@>
-
 @d term_in==i@&n@&p@&u@&t
 @d term_out==o@&u@&t@&p@&u@&t
 @d mtype==t@&y@&p@&e {this is a \.{WEB} coding trick:}
@@ -52,9 +49,9 @@ Comments and questions are welcome!
 
 [4] terminal output and input
 @x
-program MF; {all file names are defined dynamically}
+program MP; {all file names are defined dynamically}
 @y
-program MF(@!term_in,@!term_out);
+program MP(@!term_in,@!term_out);
 {all other file names are defined dynamically}
 import gpc only (gpc_execute,gpc_install_signal_handler,
                  gpc_t_signal_handler, gpc_sig_int);
@@ -95,8 +92,8 @@ cursor to the @x line and enter >} or <} to (un)indent a paragraph.
 @d tats== {change this to `$\\{tats}\equiv\.{@@\}}$' to turn off statistics}
 @z
 
-[8] shift left to build MF and right it to build INIMF.
-	@x inimf
+[8] shift left to build MP and right it to build INIMP.
+	@x inimp
 	@d init== {change this to `$\\{init}\equiv\.{@@\{}$' in the production version}
 	@d tini== {change this to `$\\{tini}\equiv\.{@@\}}$' in the production version}
 	@y
@@ -119,89 +116,21 @@ cursor to the @x line and enter >} or <} to (un)indent a paragraph.
 @d othercases == @+ else {default for cases not listed explicitly}
 @z
 
-Shift left all `trap' blocks to prepare for TRAP.
-Shift right all `part' blocks to prepare for TRAP.
-[11]
-@x part
-@!mem_max=30000; {greatest index in \MF's internal |mem| array;
-@y
-@!mem_max=35000; {increased for ibycus4,
- greatest index in \MF's internal |mem| array;
-@z
-
-[11]
-@x part
-@!max_strings=2000; {maximum number of strings; must not exceed |max_halfword|}
-@y
-@!max_strings=6000; {maximum number of strings; increased for ibycus4}
-@z
-
-@x part
-@!pool_size=32000; {maximum number of characters in strings, including all
-@y
-@!pool_size=60000; {increased for ibycus4,
-  maximum number of characters in strings, including all
-@z
-
-[11]
-	@x trap
-	@!mem_max=30000; {greatest index in \MF's internal |mem| array;
-	@y
-	@!mem_max=3000; {greatest index in \MF's internal |mem| array;
-	@z
-
-[11]
-	@x trap
-	@!error_line=72; {width of context lines on terminal error messages}
-	@!half_error_line=42; {width of first lines of contexts in terminal
-	  error messages; should be between 30 and |error_line-15|}
-	@!max_print_line=79; {width of longest text lines output; should be at least 60}
-	@!screen_width=768; {number of pixels in each row of screen display}
-	@!screen_depth=1024; {number of pixels in each column of screen display}
-	@y
-	@!error_line=64; {width of context lines on terminal error messages}
-	@!half_error_line=32; {width of first lines of contexts in terminal
-	  error messages; should be between 30 and |error_line-15|}
-	@!max_print_line=72; {width of longest text lines output; should be at least 60}
-	@!screen_width=100; {number of pixels in each row of screen display}
-	@!screen_depth=200; {number of pixels in each column of screen display}
-	@z
-
-[11]
-	@x trap
-	@!gf_buf_size=800; {size of the output buffer, must be a multiple of 8}
-	@y
-	@!gf_buf_size=8; {size of the output buffer, must be a multiple of 8}
-	@z
-
 [11] location of pool file
 @x
-@!pool_name='MFbases:MF.POOL                         ';
+@!pool_name='MPlib:MP.POOL                         ';
+  {string of length |file_name_size|; tells where the string pool appears}
+@.MPlib@>
+@!ps_tab_name='MPlib:PSFONTS.MAP                     ';
+  {string of length |file_name_size|; locates font name translation table}
 @y
-@!pool_name='MFbases/mf.pool                         ';
+@!pool_name='MPlib/mp.pool                         ';
+  {string of length |file_name_size|; tells where the string pool appears}
+@.MPlib@>
+@!ps_tab_name='MPlib/psfonts.map                     ';
+  {string of length |file_name_size|; locates font name translation table}
 @z
 
-
-[12]
-@x part
-@d mem_top==30000 {largest index in the |mem| array dumped by \.{INIMF};
-@y
-@d mem_top==35000 {largest index in the |mem| array dumped by \.{INIMF};
-@z
-
-	[12]
-	@x trap
-	@d mem_top==30000 {largest index in the |mem| array dumped by \.{INIMF};
-	@y
-	@d mem_top==3000 {largest index in the |mem| array dumped by \.{INIMF};
-	@z
-
-[12] Silvio levy' greek fonts need more opened input files.
-@x
-@d max_in_open=6 {maximum number of input files and error insertions that
-@y
-@d max_in_open=10 {maximum number of input files and error insertions that
-@z
 
 [22] accept tab and formfeed
 @x
@@ -248,7 +177,13 @@ begin clear_io_result; rewrite(f,gpc_trim(name_of_file));
 a_open_out:=rewrite_OK(f);
 @z
 
-[26] byte file output only
+[26] byte file
+@x
+begin reset(f,name_of_file,'/O'); b_open_in:=reset_OK(f);
+@y
+begin clear_io_result; reset(f,gpc_trim(name_of_file)); b_open_in:=reset_OK(f);
+@z
+
 @x
 begin rewrite(f,name_of_file,'/O'); b_open_out:=rewrite_OK(f);
 @y
@@ -329,14 +264,12 @@ is considered an output file the file variable is |term_out|.
 is considered an output file the file variable is |term_out|.
 The file |term_in| is declared as \\{input} and |term_out| as
 \\{output} in the program header.
-@^system dependencies@>
 @z
 
 [32]
 @x
 @d t_open_in==reset(term_in,'TTY:','/O/I') {open the terminal for text input}
-@d t_open_out==rewrite(term_out,'TTY:','/O')
- {open the terminal for text output}
+@d t_open_out==rewrite(term_out,'TTY:','/O') {open the terminal for text output}
 @y
 @d t_open_in==do_nothing {open the terminal for text input}
 @d t_open_out==do_nothing {open the terminal for text output}
@@ -427,7 +360,20 @@ init_terminal:=true;
 exit: end;
 @z
 
-[74] start editor
+[76] print banner line on terminal
+@x
+@<Initialize the output...@>=
+update_terminal;
+@y
+@<Initialize the output...@>=
+wterm(banner);
+if mem_ident=0 then wterm_ln(' (no mem preloaded)')
+else  begin print(mem_ident); print_ln;
+  end;
+update_terminal;
+@z
+
+[89] start editor
 @x
 @!use_err_help:boolean; {should the |err_help| string be shown?}
 @y
@@ -436,7 +382,7 @@ exit: end;
 @!edit_file_name: str_number; {file name to be passed to the system editor}
 @z
 
-[75] initial value for edit argument
+[90] initial value for edit argument
 @x
 help_ptr:=0; use_err_help:=false; err_help:=0;
 @y
@@ -444,23 +390,24 @@ help_ptr:=0; use_err_help:=false; err_help:=0;
 edit_line:=0; edit_file_name:=0;
 @z
 
-[79] set edit_cmd
+[94] set edit_cmd
 @x
   begin print_nl("You want to edit file ");
 @.You want to edit file x@>
-  slow_print(input_stack[file_ptr].name_field);
-  print(" at line "); print_int(line);@/
+  print(input_stack[file_ptr].name_field);
+  print(" at line "); print_int(true_line);@/
   interaction:=scroll_mode; jump_out;
   end;
 @y
   begin {save values to be passed to the system editor}
   edit_file_name := input_stack[file_ptr].name_field;
-  edit_line := line; add_str_ref(edit_file_name);
+  add_str_ref(edit_file_name);
+  edit_line := true_line;
   interaction:=scroll_mode; jump_out;
   end;
 @z
 
-[91] interrupt is predefined and not implemented in GNU~Pascal
+[106] interrupt is predefined and not implemented in GNU~Pascal
 @x
 @d check_interrupt==begin if interrupt<>0 then pause_for_instructions;
 @y
@@ -469,7 +416,7 @@ edit_line:=0; edit_file_name:=0;
 @d check_interrupt==begin if interrupt<>0 then pause_for_instructions;
 @z
 
-[156] pack subranges
+[171] pack subranges
 @x
 @!quarterword = min_quarterword..max_quarterword; {1/4 of a word}
 @!halfword=min_halfword..max_halfword; {1/2 of a word}
@@ -478,7 +425,7 @@ edit_line:=0; edit_file_name:=0;
 @!halfword=packed min_halfword..max_halfword; {1/2 of a word}
 @z
 
-[194] time and date
+[212] time and date
 @x
 begin internal[time]:=12*60*unity; {minutes since midnight}
 internal[day]:=4*unity; {fourth day of the month}
@@ -494,7 +441,7 @@ internal[month]:=t.m@&o@&n@&t@&h*unity;
 internal[year]:=t.y@&e@&a@&r*unity; {Anno Domini}
 @z
 
-[199] character class for tab and lf
+[217] character class for tab and lf
 @x
 for k:=127 to 255 do char_class[k]:=invalid_class;
 @y
@@ -503,54 +450,55 @@ char_class[@'11] := space_class;
 char_class[@'14] := space_class;
 @z
 
-[564]
-	@x trap
-	begin init_screen:=false;
-	@y
-	begin init_screen:=true;
-	@z
-
-[679] spurious empty line on terminal
+[640] spurious empty line on terminal
 @x
     print_ln; first:=start;
     prompt_input("*"); {input on-line into |buffer|}
 @y
-@.Please type...@>
     print_nl("");
     first:=start; {avoid empty lines on terminal and log file}
     prompt_input("*"); {input on-line into |buffer|}
 @z
 
-[769] Path separator in Unix
+[746] Path separator in Unix
 @x
+@d MP_area=="MPinputs:"
+@.MPinputs@>
 @d MF_area=="MFinputs:"
+@.MFinputs@>
+@d MP_font_area=="TeXfonts:"
+@.TeXfonts@>
 @y
+@d MP_area=="MPinputs/"
+@.MPinputs@>
 @d MF_area=="MFinputs/"
+@.MFinputs@>
+@d MP_font_area=="TeXfonts/"
+@.TeXfonts@>
 @z
 
-[771]
+[748]
 @x
 else  begin if (c=">")or(c=":") then
 @y
 else  begin if c="/" then
 @z
 
-[776]
+[752]
 @x
-MF_base_default:='MFbases:plain.base';
+MP_mem_default:='MPlib:plain.mem';
 @y
-MF_base_default:='MFbases/plain.base';
+MP_mem_default:='MPlib/plain.mem';
 @z
 
-[793] don't forget the input file name
+[771] filename is needed for system editor
 @x
-if name=str_ptr-1 then {we can conserve string pool space now}
-  begin flush_string(name); name:=cur_name;
-  end;
+flush_string(name); name:=cur_name; cur_name:=0
 @y
+do_nothing
 @z
 
-[1204]
+[1298]
 @x
 @p begin @!{|start_here|}
 @y
@@ -559,15 +507,15 @@ if name=str_ptr-1 then {we can conserve string pool space now}
 @p begin @!{|start_here|}
 @z
 
-[1204] load the base file before printing the banner line
+[1298] load the mem file before printing the banner line
 @x
-start_of_MF: @<Initialize the output routines@>;
+start_of_MP: @<Initialize the output routines@>;
 @y
-start_of_MF: @<Preload the default base file@>;
+start_of_MP: @<Preload the default mem file@>;
 @<Initialize the output routines@>;
 @z
 
-[1204] start editor and pass history
+[1298] start editor and pass history
 @x
 final_end: ready_already:=0;
 @y
@@ -577,7 +525,7 @@ gpc_halt(history);
   {pass |history| as the exit value to the system}
 @z
 
-[1205] print last end-of-line marker if needed
+[1299] print last end-of-line marker if needed
 @x
 if log_opened then
   begin wlog_cr;
@@ -585,7 +533,7 @@ if log_opened then
   if selector=term_only then
     begin print_nl("Transcript written on ");
 @.Transcript written...@>
-    slow_print(log_name); print_char(".");
+    print(log_name); print_char(".");
     end;
   end;
 end;
@@ -596,14 +544,14 @@ if log_opened then
   if selector=term_only then
     begin print_nl("Transcript written on ");
 @.Transcript written...@>
-    slow_print(log_name); print_char(".");
+    print(log_name); print_char(".");
     end;
   end;
   if term_offset > 0 then wterm_cr;
 end;
 @z
 
-[1212] return if eof 
+[1307] return if eof 
 @x
   read(term_in,m);
 @y
@@ -612,7 +560,7 @@ end;
   read(term_in,m);
 @z
 
-[1212] return if eof
+[1307] return if eof
 @x
   else  begin read(term_in,n);
 @y
@@ -621,7 +569,7 @@ end;
   read(term_in,n);
 @z
 
-[1213] return eof
+[1308] return eof
 @x
 13: begin read(term_in,l); print_cmd_mod(n,l);
 @y
@@ -630,7 +578,7 @@ end;
 read(term_in,l); print_cmd_mod(n,l);
 @z
 
-[1214 and modules added for METAFONT-GPC]
+[1309 and modules added for METAPOST-GPC]
 @x
 itself will get a new section number.
 @^system dependencies@>
@@ -638,25 +586,25 @@ itself will get a new section number.
 itself will get a new section number.
 @^system dependencies@>
 
-@ Try to preload the default base file. This is called even before
-the first line is read from the terminal, and thus turns \.{VIRMF}
-into \.{MF}, at least as seen by the user.
+@ Try to preload the default mem file. This is called even before
+the first line is read from the terminal, and thus turns \.{VIRMP}
+into \.{MP}, at least as seen by the user.
 
-\indent\.{INIMF} sets |base_ident| to `\.{INIMF}' and won't load a base
+\indent\.{INIMP} sets |mem_ident| to `\.{INIMP}' and won't load a mem
 file here.
 
-@<Preload the default base file@> =
-if base_ident = 0 then
-  begin pack_buffered_name(base_default_length - base_ext_length, 1, 0);
-  if not w_open_in(base_file) then
+@<Preload the default mem file@> =
+if mem_ident = 0 then
+  begin pack_buffered_name(mem_default_length - mem_ext_length, 1, 0);
+  if not w_open_in(mem_file) then
     begin
-    wterm_ln('I can''t find the base file ', name_of_file);
+    wterm_ln('I can''t find the mem file');
     goto final_end
     end;
-  if not load_base_file then
-    begin w_close(base_file); goto final_end
+  if not load_mem_file then
+    begin w_close(mem_file); goto final_end
     end;
-  w_close(base_file);
+  w_close(mem_file);
   end
 
 @ 
@@ -669,7 +617,7 @@ var i: integer; {index into |name_of_file|}
     j: pool_pointer; {index into |str_pool|}
     cmd_line: gpc_string(200); {area to build the command line}
 begin i := 1; j := str_start[edit_file_name];
-while j<str_start[edit_file_name + 1] do
+while j<str_stop(edit_file_name) do
   begin name_of_file[i] := xchr[str_pool[j]]; incr(i); incr(j)
   end;
 while i<=file_name_size do begin name_of_file[i] := ' '; incr(i) end;
@@ -684,7 +632,7 @@ end;
 @d gpc_install_signal_handler ==
  i@&n@&s@&t@&a@&l@&l@&s@&i@&g@&n@&a@&l@&h@&a@&n@&d@&l@&e@&r
 @d gpc_sig_int == s@&i@&g@&i@&n@&t
-@d gpc_integer == cinteger {for later versions of GPC (3.4+) replace
+@d gpc_integer == integer {for later versions of GPC (3.4+) replace
   \\{integer} by \\{cinteger}}
   
 @<Error hand...@>=
@@ -693,10 +641,11 @@ begin interrupt := 1 @+end;
   
 @
 @<Set initial values ... @>=
-dummy_boolean := gpc_install_signal_handler(gpc_sig_int,set_interrupt,
-      true,true,n@&u@&l@&l,n@&u@&l@&l);
+gpc_install_signal_handler(gpc_sig_int,set_interrupt,true,true,dummy_handler,
+  dummy_boolean);
   
 @ Here are two variables that are needed to install |set_interrupt|.
 @<Local variables for initialization@> =
+dummy_handler: gpc_t_signal_handler;
 dummy_boolean: boolean;
 @z

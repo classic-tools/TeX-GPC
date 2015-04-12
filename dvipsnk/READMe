@@ -20,5 +20,13 @@ your printer.  To make dvips generate missing .pk fonts automatically,
 the resolutions in config.ps and in the mf mode "localfont" must
 agree.
 
+Tip: With an A4 papersize you might want to adjust the origin
+to 1in-3mm,1in+8.8m. This line in config.ps does that:
+O -3mm,8.8mm
+
+This will give you equal left and right margins with Plain TeX's
+predefined \hsize of 6.5in, and therefore the pagenumbers will line up
+nicely on two sided output.
+
 Enjoy,
 Wolfgang

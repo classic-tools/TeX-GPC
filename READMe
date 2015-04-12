@@ -1,26 +1,26 @@
-September 2008
+November 2009
 This directory contains change files for Donald E. Knuth's suite
 of TeX related programs. The change files (.ch) and Don Knuth's
 WEB files (.web) from March 2008 are the key components of a
 construction kit for "TeX-GPC"---a TeX system which is based on
 the GNU Pascal compiler and runs in a Unix environment.  It's
 smaller, less configurable and therefore easier to master than
-other TeX distributions.
+other TeX distributions and should compile and run on Unix alikes.
 
 These building bricks are glued together by shell scripts in
 the---guess where---shell subdirectory.
 
-The MF directory contains shell scripts for installing fonts
-(xxxfonts), and two subdirectories kd und iby that serve as examples
-on how to install fonts with TeX-GPC. These are polytonic ancient
-Greek fonts suited for the scholar but not for modern Greek.
+The MFT directory contains shell scripts for installing fonts
+(xxxfonts), and the directory iby that shows how to install fonts
+with TeX-GPC. In this case a polytonic Greek font, suited for ancient
+Greek texts.
 
 The mp directory helps to include John Hobby's MetaPost in TeX-GPC.
 MetaPost lets you define pictures to be included in your TeX
 document.
 
-The directories dvipsnk and xdvi help to add Tom Rokicki's dvips
-and Paul Vojta's xdvi.
+The directories dvipsnk and xdvi show how to install Tom Rokicki's
+dvips and Paul Vojta's xdvi.
 
 I was somewhat intrigued while building TeX from its sources, since
 some of these depend on others to be built and installed.  Knuth
@@ -33,21 +33,46 @@ typeset WEB program.  But don't despair, I cut this indefinite
 recursion and provided tangle.p, the Pascal source of tangle, and
 tex.pdf. It shows what, why and how I changed Knuth's program.
 see
-  http://wwwlehre.ba-stuttgart.de/~helbig/tex-gpc/tex.pdf
+  http://wwwlehre.dhbw-stuttgart.de/~helbig/tex-gpc/tex.pdf
 
 Preparation:
 ===========
-Make sure your system is a Unix alike: if your file path names
-start with something like "C:\Dokumente und Einstellungen" it is
-not.
+Martin Monperrus suggested to create a second edition of TeX-GPC, just to
+make it compile with current releases of GPC. And here it is.
 
-I took NetBSD 3.0 and the latest stable version of GNU Pascal,
-which is 2.1, from the NetBSD package gpc-2.1nb3.
+The previous edition of TeX-GPC was born in a NetBSD 3.0 system,
+compiled by the latest stable version of GNU Pascal, which is 2.1,
+from the NetBSD package gpc-2.1nb3.
 
 Luis Rivera successfully built TeX-GPC under CYGWIN with GPC 3.4.4
 and found out that newer versions of GPC expect the parameter type
 "cinteger" instead of "integer" in a certain function.  Change the
 WEB macro "gpc_integer" in tex.ch and mf.ch accordingly.
+
+This release of TeX-GPC was tested on Mac OS X 10.6.2 (Snow Leopard)
+and GPC 20070904, based on gcc-3.4.6.
+
+The changes are:
+Now works out of the box with contemporary GPC's. But not with NetBSD-3.0
+
+The directory MF was renamed to MFT, because OS X yet has to learn
+how uppercase and lowercase differ.
+
+The old GPC let you mistreat a function as a procedure.  And, of
+course, I did. This is fixed now.
+
+Another bug pointed out by Joachim Kuebart is fixed: If the first
+input line (or the command line) contains spaces only, a loop might
+not terminate properly. (Well it worked anyhow, you'll have to read
+the source to find this bug, testing wouldn't help!)
+
+A new directory, ,,tech'', that supports german style and hyphenation
+was added.
+
+The pascal sources initex.p and inimf.p are to be kept around now,
+to let you easily change constants, automated by the shell script itgl.
+
+The documentation in tex.pdf is largely improved. 
 
 Overview:
 =========
@@ -92,6 +117,10 @@ WEB:
 
                    tgl
        .web, .ch --------> a.out (linking the last two steps)
+
+                   itgl
+      x.web, x.ch --------> a.out,  inix.p, .pool (links the first two steps
+                                                  and keeps the pascal sources)
 
 		   weave
        .web, .ch --------> .tex (Description of the program)
@@ -264,17 +293,14 @@ Step by step procedure to bootstrap TeX-GPC
 Compile tangle.p (gpc tangle.p) and move a.out as tangle to your
 binary directory.
 
-1. Make inimf and initex  mf.web,  mf.ch --> inimf, MFBases/mf.pool
-                         tex.web, tex.ch --> initex, TeXformats/tex.pool
+1. Make inimf and initex  mf.web,  mf.ch --> inimf, inimf.p, MFBases/mf.pool
+                         tex.web, tex.ch --> initex,initex.p TeXformats/tex.pool
 ------------------------------------------------------------------------
 Build the ini-programs and save them as initex, resp. inimf.
-Move tex.pool to TeXformats and mf.pool to MFbases.
-If you get an error message like
-	! MF.POOL doesn't match; TANGLE me again.
-you probably forgot to move mf.pool to MFbases (like I do regularly),
-so don't tangle around but move around.
+Move tex.pool to TeXformats and mf.pool to MFbases, use itgl instead
+of tgl to keep inimf.p and initex.p.
 
-2. Make plain.base                ../lib/plain.mf --> MFbases/plain.base
+2. Make plain.base                   lib/plain.mf --> MFbases/plain.base
 ------------------------------------------------------------------------
 Go to the directory tex-gpc/mf and use inimf to create plain.base.
 The file local.mf contains mode definitions for my HP LaserJet 1320
@@ -299,12 +325,14 @@ packed font files (.nnnpk) in the next step.
 ------------------------------------------------------------------------
 Prepare tex-gpc to run both METAFONT (mk_MF_dir) and TeX (mk_TeX_dir)
 and run the shell script plainfonts from there.
+Check the file trouble that might contain commands that failed.
 
-6. Make plain.fmt              ../lib/plain.tex --> TeXformats/plain.fmt
+6. Make plain.fmt                 lib/plain.tex --> TeXformats/plain.fmt
 ------------------------------------------------------------------------
-Go to the directory tex-gpc/tex to build plain.fmt.
+Copy lib/hyphen.tex to TeXinputs and go to the directory tex-gpc/tex
+to build plain.fmt.
 This command line will do 
-    initex ../lib/plain \\dump
+    initex ../lib/plain \\dump # one backslash is consumend by sh!
 Move plain.fmt to TeXformats.
 
 7. Finally build tex                             tex.web, tex.ch --> tex

@@ -1,6 +1,6 @@
 case $# in
-1) b=`basename $1 .web`; tangle $1 /dev/null $b.p $b.pool;;
-2) b=`basename $2 .ch`;  tangle $1 $2        $b.p $b.pool;;
-*) echo Usage: $0 web-file [ ch-file ];;
+1) b=`basename $1 .web`; tangle $1 /dev/null $b.p /dev/null;;
+2) b=`basename $2 .ch`;  tangle $1 $2        $b.p /dev/null;;
+*) echo Usage: `basename $0` web-file [ ch-file ] ; exit 1
 esac && \
 gpc -Wno-warnings $b.p
