@@ -33,7 +33,7 @@ typeset WEB program.  But don't despair, I cut this indefinite
 recursion and provided tangle.p, the Pascal source of tangle, and
 tex.pdf. It shows what, why and how I changed Knuth's program.
 see
-  http://wwwlehre.dhbw-stuttgart.de/~helbig/tex-gpc/tex.pdf
+  https://github.com/classic-tools/TeX-GPC/raw/master/tex.pdf
 
 Preparation:
 ===========
